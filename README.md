@@ -34,3 +34,4 @@ array(2) {
 
 As you can see, the factorize function accepts integers and strings as parameter, so that if you're poor and you have only a 32 bit system, you will still be able to provide 64 bit integers as a string.
 
+The function can throw an \Exception if factorization fails.
