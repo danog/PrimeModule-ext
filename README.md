@@ -2,6 +2,8 @@
 
 PHP extension for factorizing huge (up to 2^63-1) numbers (optimized for huge semiprimes).
 
+To compile it, simply install https://github.com/CopernicaMarketingSoftware/PHP-CPP and run `make && sudo make install` in this directory.
+
 API:
 
 ```
