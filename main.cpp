@@ -28,8 +28,6 @@ inline uint64_t gcd(uint64_t a, uint64_t b) {
 inline Php::Value factorize(Php::Parameters &parameters)
 {
     uint64_t what = (int64_t) parameters[0];
-    uint32_t p;
-    uint32_t q;
     int32_t it = 0, i, j;
     uint64_t g = 0;
     for (i = 0; i < 3 || it < 1000; i++) {
@@ -68,17 +66,7 @@ inline Php::Value factorize(Php::Parameters &parameters)
     }
 
     if (g > 1 && g < what) {
-        p = (uint32_t) g;
-        q = (uint32_t) (what / g);
-        if (p > q) {
-            uint32_t tmp = p;
-            p = q;
-            q = tmp;
-        }
-        Php::Value result;
-        result[0] = (int32_t) p;
-        result[1] = (int32_t) q;
-        return result;
+        return (int32_t) g;
     } else {
         throw Php::Exception("Factorization failed!");
         return false;
