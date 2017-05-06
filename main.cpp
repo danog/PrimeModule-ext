@@ -89,9 +89,7 @@ extern "C" {
     PHPCPP_EXPORT void *get_module() {
         static Php::Extension extension("primemodule", "1.0");
         extension.add<factorize>("factorize", {
-            Php::ByVal("pq", Php::Type::Numeric),
-            Php::ByRef("p", Php::Type::Numeric),
-            Php::ByRef("q", Php::Type::Numeric),
+            Php::ByVal("pq")
         });
         return extension;
     }
