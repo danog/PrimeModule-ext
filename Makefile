@@ -19,6 +19,7 @@
 #
 
 NAME                =   primemodule
+PHP_CONFIG			=	php-config
 
 #
 #   Php.ini directories
@@ -53,7 +54,7 @@ endif
 #   this with a different fixed directory
 #
 
-EXTENSION_DIR       =   $(shell php-config --extension-dir)
+EXTENSION_DIR       =   `${PHP_CONFIG} --extension-dir`
 
 #
 #   The name of the extension and the name of the .ini file
