@@ -98,7 +98,7 @@ LINKER_DEPENDENCIES =   -lphpcpp
 
 RM                  =   rm -f
 CP                  =   cp -f
-MKDIR               =   mkdir -p
+MKDIR               =   mkdir
 
 #
 #   All source files are simply all *.cpp files found in the current directory
@@ -123,7 +123,13 @@ ${EXTENSION}:           ${OBJECTS}
 ${OBJECTS}:
 			${COMPILER} ${COMPILER_FLAGS} $@ ${@:%.o=%.cpp}
 
-install:
+${INI_DIR}:
+					${MKDIR} ${INI_DIR}
+
+${EXTENSION_DIR}:
+					${MKDIR} ${EXTENSION_DIR}
+
+install:			${INI_DIR} ${EXTENSION_DIR}
 			${CP} ${EXTENSION} ${EXTENSION_DIR}
 			${CP} ${INI} ${INI_DIR}
 
