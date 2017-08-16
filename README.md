@@ -14,7 +14,7 @@ git clone https://github.com/danog/PrimeModule-ext
 cd PrimeModule-ext
 make -j$(nproc)
 sudo make install
-
+```
 
 API:
 
