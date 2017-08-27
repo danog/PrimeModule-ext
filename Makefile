@@ -98,7 +98,7 @@ LINKER_DEPENDENCIES =   -lphpcpp
 
 RM                  =   rm -f
 CP                  =   cp -f
-MKDIR               =   mkdir
+MKDIR               =   mkdir -p
 
 #
 #   All source files are simply all *.cpp files found in the current directory
