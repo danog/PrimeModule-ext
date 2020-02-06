@@ -5,7 +5,7 @@ PHP extension for factorizing huge (up to 2^63-1) numbers (optimized for huge se
 To compile it, simply install https://github.com/CopernicaMarketingSoftware/PHP-CPP and run `make && sudo make install` in this directory.
 
 ```
-git clone https://github.com/danog/PHP-CPP && cd PHP-CPP && make -j$(nproc) && sudo make install && cd .. && git clone https://github.com/danog/PrimeModule-ext && cd PrimeModule-ext && make -j$(nproc) && sudo make install
+sudo apt-get install build-essential php$(echo "<?php echo PHP_MAJOR_VERSION.'.'.PHP_MINOR_VERSION;" | php)-dev && git clone https://github.com/danog/PHP-CPP && cd PHP-CPP && make -j$(nproc) && sudo make install && cd .. && git clone https://github.com/danog/PrimeModule-ext && cd PrimeModule-ext && make -j$(nproc) && sudo make install
 ```
 
 API:
