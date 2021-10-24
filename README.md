@@ -1,43 +1,55 @@
 # PrimeModule-ext
 
-PHP extension for factorizing huge (up to 2^63-1) numbers (optimized for huge semiprimes).
+C++ header-only library, binary and FFI library for factorizing huge (up to 2^63-1) numbers (optimized for huge semiprimes).
 
-To compile it, simply install https://github.com/CopernicaMarketingSoftware/PHP-CPP and run `make && sudo make install` in this directory.
+## Install
 
-```
-sudo apt-get install build-essential php$(echo "<?php echo PHP_MAJOR_VERSION.'.'.PHP_MINOR_VERSION;" | php)-dev && git clone https://github.com/danog/PHP-CPP && cd PHP-CPP && make -j$(nproc) && sudo make install && cd .. && git clone https://github.com/danog/PrimeModule-ext && cd PrimeModule-ext && make -j$(nproc) && sudo make install
-```
-
-API:
-
-```
-integer factorize( mixed $pq )
+Arch Linux (AUR):
+```bash
+paru -S primemodule
 ```
 
-Parameters:
-
-pq - The number to factorize, a string or an integer.
-
-
-Return value: an integer, containing one of the factors of the number.
-
-
-Example:
+Debian/Ubuntu:
 ```
+sudo apt-get install build-essential && git clone https://github.com/danog/PrimeModule-ext && cd PrimeModule-ext && make -j$(nproc) && sudo make install
+```
+
+## API
+
+### Binary
+
+```bash
+primemodule number
+```  
+
+On success (return code 0), prints to stdout one of the prime factors of `number`.
+
+### C++
+
+```c++
+uint32_t PrimeModule::factorize(uint64_t number);
+```
+
+Returns one of the prime factors of `number`, throws an std::runtime_error on failure.
+
+### C
+
+```c
+int64_t factorize(uint64_t number);
+```
+
+Returns one of the prime factors of `number`, returns -1 on failure.
+
+
+### PHP
+
+```php
 <?php
-var_dump(factorize(1724114033281923457));
-var_dump(factorize("2189285106422392999"));
-var_dump(factorize(15));
+
+$f = FFI::load("/usr/include/primemodule-ffi.h");
+
+// Always pass strings to allow 64-bit factorization with no loss of precision on 32-bit PHP.
+var_dump($f->factorizeFFI("2189285106422392999"));
 ```
 
-This will output:
-
-```
-int(1402015859)
-int(1117663223)
-int(5)
-```
-
-As you can see, the factorize function accepts integers and strings as parameter, so that if you're poor and you have only a 32 bit system, you will still be able to provide 64 bit integers as a string.
-
-The function can throw an \Exception if factorization fails.
+Returns one of the prime factors of `2189285106422392999`, returns -1 on failure.
