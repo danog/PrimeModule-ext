@@ -11,7 +11,7 @@ arch=('any')
 license=('GPL')
 
 source=("https://github.com/$_repouser/$_reponame/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('0dc46842c27c4cec27304998a55969093f04903f2bad182e88d5d783a4c4065290d5f0f49e6caec7eaae4c6e50a28c6d6e8e344ab17c655c4839d64bc55389db')
+sha512sums=('69f1961c5d25ce4fa2074544951e55ad7585a0c36e03fe880e15926c794cd4942bdd5253cc39421b278af24b962a7f9f4813cb454ebfde4d5cd5f9c3e7770860')
 
 build() {
   cd "${srcdir}/${_reponame}-${pkgver}"
