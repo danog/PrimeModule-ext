@@ -21,6 +21,7 @@ ${LIBRARY}:	src/${NAME}.cpp src/${NAME}.hpp
 			${COMPILER} -shared ${COMPILER_FLAGS} $@ src/${NAME}.cpp
 
 install:	${BINARY} ${LIBRARY} src/${NAME}.hpp src/${NAME}.h
+			${MKDIR} ${DESTDIR}/bin ${DESTDIR}/lib ${DESTDIR}/include
 			${CP} ${BINARY} ${DESTDIR}/bin
 			${CP} ${LIBRARY} ${DESTDIR}/lib
 			${CP} src/primemodule.hpp src/primemodule.h src/primemodule-ffi.h ${DESTDIR}/include
